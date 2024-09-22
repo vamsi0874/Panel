@@ -18,7 +18,6 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
-// import { register } from "@/actions/register";
 import AuthContext from "../contexts/authContext";
 
 export const SignUp = () => {
@@ -54,7 +53,7 @@ export const SignUp = () => {
       <CardWrapper
         headerLabel='Create an account'
         backButtonLabel="Already have an account"
-        backButtonHref="http://localhost:5173/login"
+        backButtonHref="http://localhost:5174/login"
       >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>

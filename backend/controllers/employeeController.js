@@ -2,7 +2,6 @@
 const User = require('../models/User');
 const Employee = require('../models/Employee');
 
-// Create Employee Controller Function
 const createEmployee = async (req, res) => {
   try {
     const { name, email, mobile, designation, gender, course } = req.body;

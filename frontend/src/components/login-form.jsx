@@ -1,10 +1,8 @@
 import React, { useContext, useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import {useNavigate} from 'react-router-dom'
-import { Link } from "react-router-dom"; // Correct import
 import { LoginSchema } from "../schemas/";
-import { useForm, Controller } from "react-hook-form"; // Ensure useForm is imported correctly
+import { useForm } from "react-hook-form"; 
 import {
   Form,
   FormControl,
@@ -50,7 +48,7 @@ export const LoginForm = () => {
   return (
     <div className="bg-gray-50 p-2 rounded-lg shadow-md max-w-md mx-auto">
       <Form {...form}>
-        {/* Ensure the form handleSubmit is correctly used */}
+  
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="">
             <FormField
