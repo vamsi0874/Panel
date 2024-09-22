@@ -87,13 +87,6 @@ export const LoginForm = () => {
                       disabled={isPending}
                     />
                   </FormControl>
-                  <div className="text-right mt-2">
-                    <Button variant="link" asChild>
-                      <Link to="/auth/reset" className="text-blue-600 hover:underline">
-                        Forgot password?
-                      </Link>
-                    </Button>
-                  </div>
                   <FormMessage />
                 </FormItem>
               )}
