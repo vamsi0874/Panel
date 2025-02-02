@@ -37,10 +37,10 @@ export const SignUp = () => {
 
   const onSubmit = (values) => {
     startTransition(async () => {
-      console.log('Submitted values:', values);
+      // console.log('Submitted values:', values);
       await signup(values).then((data) => {
-        console.log('values',values)
-        console.log('data',data)
+        // console.log('values',values)
+       
         setError(data?.error);
         setSuccess(data?.success);
       });

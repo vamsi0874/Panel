@@ -18,7 +18,7 @@ const authService = {
 
     try {
     const response = await api.post('/users/signup', { username, email, password });
-    console.log('response',response)
+    // console.log('response',response)
     return response.data;
     }
     catch (err){

@@ -25,7 +25,7 @@ const navigate = useNavigate()
   const onSubmit = (values) => {
     startTransition(() => {
         createEmployee(values).then((res) => {
-           console.log('values',values)
+          //  console.log('values',values)
 
           if (res.data?.error) {
             setError(res.data.error)
@@ -37,22 +37,22 @@ const navigate = useNavigate()
         
         
         }).catch((error) =>{
-          console.log('create employee error',error)
+          // console.log('create employee error',error)
           setError((error.error))
         } )
       })
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file && ['image/png', 'image/jpeg'].includes(file.type)) {
-      setValue('image', file, { shouldValidate: true });
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file && ['image/png', 'image/jpeg'].includes(file.type)) {
+  //     setValue('image', file, { shouldValidate: true });
 
-      console.log('file',file)
-    } else {
-      setValue('image', null, { shouldValidate: true });
-    }
-  };
+  //     console.log('file',file)
+  //   } else {
+  //     setValue('image', null, { shouldValidate: true });
+  //   }
+  // };
 
   return (
     <div className="p-8">
@@ -142,14 +142,14 @@ const navigate = useNavigate()
           {errors.course && <span className="text-red-600">{errors.course.message}</span>}
         </div>
 
-        <div>
+        {/* <div>
           <label>Image Upload (PNG/JPEG)</label>
           <input type="file" onChange={handleImageUpload} />
           {errors.image && <span className="text-red-600">{errors.image.message}</span>}
-        </div>
+        </div> */}
         <FormError message={error} />
         <FormSuccess message={success} />
-        <button disabled={isPending} type="submit" className="bg-green-500 text-white p-2 rounded">
+        <button disabled={isPending} type="submit" className="bg-blue-500 text-white p-2 rounded">
           Submit
         </button>
        

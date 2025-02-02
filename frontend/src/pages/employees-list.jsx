@@ -5,7 +5,7 @@ import { EmployeeData } from '@/components/employee-data';
 import { Navbar } from '../components/navbar';
 import {ok} from '../images/assests'
 const EmployeeList = () => {
-  console.log('ok',ok)
+  
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -115,7 +115,7 @@ const EmployeeList = () => {
           <thead>
             <tr className="bg-gray-200">
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('_id')}>Unique Id</th>
-              <th className="border p-2 cursor-pointer" >Image</th>
+              {/* <th className="border p-2 cursor-pointer" >Image</th> */}
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('name')}>Name</th>
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('email')}>Email</th>
               <th className="border p-2">Mobile No</th>
@@ -132,8 +132,20 @@ const EmployeeList = () => {
                 <tr key={employee._id} className="text-center">
                   <EmployeeData employee={employee} image={image} />
                   <td className="border p-2">
-                    <button onClick={() => handleEdit(employee._id)} className="bg-blue-500 text-white p-1 rounded">Edit</button>
-                    <button onClick={() => handleDelete(employee._id)} className="bg-red-500 text-white p-1 ml-2 rounded">Delete</button>
+                  <button 
+                      onClick={() => handleEdit(employee._id)} 
+                      className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-blue-600 font-medium hover:bg-gray-100 transition"
+                    >
+                      Edit 
+                    </button>
+
+                    <button 
+                      onClick={() => handleDelete(employee._id)} 
+                      className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-red-500 font-medium hover:bg-gray-100 transition ml-2"
+                    >
+                      Delete 
+                    </button>
+
                   </td>
                 </tr>
               ))
@@ -150,7 +162,7 @@ const EmployeeList = () => {
         <button 
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
-          className="bg-gray-300 text-black p-2 rounded"
+         className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-black-600 font-medium hover:bg-gray-100 transition"
         >
           Previous
         </button>
@@ -160,7 +172,11 @@ const EmployeeList = () => {
             <button
               key={index + 1}
               onClick={() => handlePageChange(index + 1)}
-              className={`px-4 py-2 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+              className={`px-4 py-2 rounded-md border border-gray-300 
+                ${currentPage === index + 1 
+                  ? 'bg-white-600 text-black shadow-md' 
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 transition'}`}
+              
             >
               {index + 1}
             </button>
@@ -170,7 +186,7 @@ const EmployeeList = () => {
         <button 
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className="bg-gray-300 text-black p-2 rounded"
+         className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-black-600 font-medium hover:bg-gray-100 transition"
         >
           Next
         </button>

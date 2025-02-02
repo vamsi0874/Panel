@@ -56,15 +56,15 @@ const EditEmployee = () => {
     }
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file && ['image/png', 'image/jpeg'].includes(file.type)) {
-      setValue('image', file, { shouldValidate: true });
-      console.log('file', file);
-    } else {
-      setValue('image', null, { shouldValidate: true });
-    }
-  };
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file && ['image/png', 'image/jpeg'].includes(file.type)) {
+  //     setValue('image', file, { shouldValidate: true });
+  //     console.log('file', file);
+  //   } else {
+  //     setValue('image', null, { shouldValidate: true });
+  //   }
+  // };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -157,7 +157,7 @@ const EditEmployee = () => {
           </div>
 
           {/* Image field */}
-          <div>
+          {/* <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">Image Upload (PNG/JPEG)</label>
             <input
               type="file"
@@ -165,7 +165,7 @@ const EditEmployee = () => {
               className="border border-gray-300 p-3 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             />
             {errors.image && <span className="text-red-500 text-sm mt-1">{errors.image.message}</span>}
-          </div>
+          </div> */}
 
           {/* Submit button */}
           <button

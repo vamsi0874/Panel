@@ -30,11 +30,11 @@ export const CreateEmployeeSchema = z.object({
     gender: z.enum(['Male', 'Female'], { message: 'Gender is required' }),
     course: z.array(z.enum(['MCA', 'BCA', 'BSC'])).nonempty({ message: 'At least one course is required' }),
     image: z
-      .any()
-      .refine(
-        (file) => file && ['image/png', 'image/jpeg'].includes(file.type),
-        { message: 'Image must be a PNG or JPEG file' }
-      ),
+      .any().optional()
+      // .refine(
+      //   (file) => file && ['image/png', 'image/jpeg'].includes(file.type),
+      //   { message: 'Image must be a PNG or JPEG file' }
+      // ),
   });
 
 
@@ -46,11 +46,11 @@ export const EmployeeSchema = z.object({
     gender: z.enum(['Male', 'Female'], { message: 'Gender is required' }),
     course: z.array(z.enum(['MCA', 'BCA', 'BSC'])).nonempty({ message: 'At least one course is required' }),
     image: z
-      .any()
-      .refine(
-        (file) => file && ['image/png', 'image/jpeg'].includes(file.type),
-        { message: 'Image must be a PNG or JPEG file' }
-      ),
+      .any().optional()
+      // .refine(
+      //   (file) => file && ['image/png', 'image/jpeg'].includes(file.type),
+      //   { message: 'Image must be a PNG or JPEG file' }
+      // ),
   });
 
   export const EditSchema = z.object({

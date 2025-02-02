@@ -17,12 +17,12 @@ export const AuthProvider = ({ children }) => {
       if (response) {
        
          setUser(response.user);
-        console.log('user',user)
+        // console.log('user',user)
         localStorage.setItem('user', JSON.stringify(response));
         return response
       }
     } catch (error) {
-      console.log('message',error)
+      // console.log('message',error)
       console.error('Login failed', error);
      
     }
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       if (response) {
         setUser(response.user);
         localStorage.setItem('user', JSON.stringify(response));
-        console.log('response',response)
+        // console.log('response',response)
          return response
       }
     } catch (error) {
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     if (storedUser) {
       setUser(storedUser.user);
     }
-    console.log('user',user)
+    // console.log('user',user)
     setLoading(false); 
   }, []);
 

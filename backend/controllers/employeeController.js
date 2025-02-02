@@ -6,8 +6,8 @@ const createEmployee = async (req, res) => {
   try {
     const { name, email, mobile, designation, gender, course } = req.body;
     const user = await User.findOne({ email });
-   console.log('user',user)
-    const image = req.file.filename
+  //  console.log('user',user)
+    // const image = req.file.filename
     if (user) {
        console.log('mjocndicndcnid')
         return res.json({ error: 'User with the mail Exists' });
@@ -20,7 +20,7 @@ const createEmployee = async (req, res) => {
       designation,
       gender,
       course,
-      image,
+      // image,
     });
 
     // Save employee to the database
@@ -72,11 +72,11 @@ const deleteEmployee = async (req, res) => {
 const editEmployee = async (req, res) => {
 
   const { id } = req.params;
-  console.log('id',id)
+  // console.log('id',id)
   const { name, email, mobile, designation, gender, course } = req.body;
 
   const image = req.file?.filename
-  console.log('course-',course)
+  // console.log('course-',course)
   try {
 
     const employee = await Employee.findById(id);
@@ -84,7 +84,7 @@ const editEmployee = async (req, res) => {
       return res.status(404).json({ message: 'Employee not found' });
     }
 
-    // Update employee fields
+    
     employee.name = name || employee.name;
     employee.email = email || employee.email;
     employee.mobile = mobile || employee.mobile;

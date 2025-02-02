@@ -19,13 +19,13 @@ const signup = async (req, res) => {
         email,
         password: await bcrypt.hash(password, 10)
       });
-      console.log('dddddddd')
+     
       await user.save();
   
       const token = jwt.sign(
         { _id: user._id },
         process.env.JWT_SECRET)
-        console.log('user saved')
+      
         res.json({ token, user, success:'user saved' });
     } catch (err) {
       console.error(err.message)
@@ -48,7 +48,7 @@ const login = async (req, res) => {
      
         if (!isMatch) {
          
-         console.log('not match')
+        
             return res.json({ error: 'incorrect password' });
         }
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
