@@ -3,7 +3,7 @@ import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import { EmployeeData } from '@/components/employee-data';
 import { Navbar } from '../components/navbar';
-import {ok} from '../images/assests'
+
 const EmployeeList = () => {
   
   const [employees, setEmployees] = useState([]);
@@ -11,7 +11,7 @@ const EmployeeList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [employeesPerPage] = useState(5);
   const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
-  const [image , setImage] = useState(null)
+  // const [image , setImage] = useState(null)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const EmployeeList = () => {
           <thead>
             <tr className="bg-gray-200">
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('_id')}>Unique Id</th>
-              {/* <th className="border p-2 cursor-pointer" >Image</th> */}
+              <th className="border p-2 cursor-pointer" >Image</th>
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('name')}>Name</th>
               <th className="border p-2 cursor-pointer" onClick={() => handleSort('email')}>Email</th>
               <th className="border p-2">Mobile No</th>
@@ -130,7 +130,7 @@ const EmployeeList = () => {
             {currentEmployees.length > 0 ? (
               currentEmployees.map((employee) => (
                 <tr key={employee._id} className="text-center">
-                  <EmployeeData employee={employee} image={image} />
+                  <EmployeeData employee={employee} />
                   <td className="border p-2">
                   <button 
                       onClick={() => handleEdit(employee._id)} 

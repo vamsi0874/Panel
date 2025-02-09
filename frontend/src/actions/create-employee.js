@@ -7,9 +7,7 @@ export const createEmployee = async (
  
     try {
         const response = await api.post('/createEmployee', {...values}
-          ,{
-            headers: {"Content-Type": "multipart/form-data"}
-          }
+          
         )
       //  console.log('response',response)
        

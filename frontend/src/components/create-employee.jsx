@@ -6,13 +6,15 @@ import { createEmployee } from '../actions/create-employee';
 import { FormError } from './form-error';
 import { FormSuccess } from './form-success';
 import { useNavigate } from 'react-router-dom';
+import Upload from './upload';
 
 export const CreateEmployee = () => {
 const [isPending,startTransition] = useTransition()
 const [error, setError] = useState("");
 const [success, setSuccess] = useState("");
 const navigate = useNavigate()
-
+const [imageUrl, setImageUrl] = useState(null);
+const [uploading, setUploading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,37 +24,32 @@ const navigate = useNavigate()
     resolver: zodResolver(CreateEmployeeSchema),
   });
 
-  const onSubmit = (values) => {
-    startTransition(() => {
-        createEmployee(values).then((res) => {
-          //  console.log('values',values)
+  
+const onSubmit = async (values) => { // Make onSubmit async
+  if (imageUrl) { // Check if imageUrl is available
+      const newValues = { ...values, imageUrl };
 
-          if (res.data?.error) {
-            setError(res.data.error)
+      startTransition(async () => { // Make transition callback async
+          try {
+              const res = await createEmployee(newValues); // Use await
+              console.log('values', newValues); // Log newValues
+
+              if (res.data?.error) {
+                  setError(res.data.error);
+              }
+              if (res.data?.success) {
+                  navigate('/employee-list');
+                  setSuccess(res.data.success);
+              }
+          } catch (error) {
+              console.error('create employee error', error);
+              setError(error.message || "An error occurred"); // More robust error handling
           }
-          if (res.data?.success) {
-            navigate('/employee-list')
-            setSuccess(res.data.success)
-          }
-        
-        
-        }).catch((error) =>{
-          // console.log('create employee error',error)
-          setError((error.error))
-        } )
-      })
-  };
-
-  // const handleImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file && ['image/png', 'image/jpeg'].includes(file.type)) {
-  //     setValue('image', file, { shouldValidate: true });
-
-  //     console.log('file',file)
-  //   } else {
-  //     setValue('image', null, { shouldValidate: true });
-  //   }
-  // };
+      });
+  } else if (!uploading) {
+      setError("Please upload an image before submitting."); // User-friendly message
+  }
+};
 
   return (
     <div className="p-8">
@@ -142,11 +139,10 @@ const navigate = useNavigate()
           {errors.course && <span className="text-red-600">{errors.course.message}</span>}
         </div>
 
-        {/* <div>
-          <label>Image Upload (PNG/JPEG)</label>
-          <input type="file" onChange={handleImageUpload} />
-          {errors.image && <span className="text-red-600">{errors.image.message}</span>}
-        </div> */}
+        <div>
+        <Upload setImageUrl={setImageUrl} setUploading={setUploading}  />
+        {uploading && <p>Uploading image...</p>}
+        </div>
         <FormError message={error} />
         <FormSuccess message={success} />
         <button disabled={isPending} type="submit" className="bg-blue-500 text-white p-2 rounded">

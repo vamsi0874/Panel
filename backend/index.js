@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI).then(() => {
 
@@ -31,9 +32,7 @@ const userRoutes = require('./routes/userRoutes');
 
 const employeeRoutes = require('./routes/employeeRoutes');
 
-app.get('/', (req, res) => {
-    res.send('API is running');
-})
+
 app.use('/api/users', userRoutes);
 app.use('/api', employeeRoutes);
 
