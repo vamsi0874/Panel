@@ -15,7 +15,7 @@ const imagekit = new ImageKit({
   });
 
   router.get("/upload", (req, res) => {
-    console.log("hiiiiiiiiii")
+ 
     const result = imagekit.getAuthenticationParameters();
     res.send(result);
   });

@@ -32,7 +32,7 @@ const [uploading, setUploading] = useState(false);
 const onSubmit = async (values) => { // Make onSubmit async
   if (imageUrl) { // Check if imageUrl is available
       const newValues = { ...values, imageUrl };
-     console.log(newValues)
+   
       startTransition(async () => { // Make transition callback async
           try {
               const res = await createEmployee(newValues); // Use await

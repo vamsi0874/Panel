@@ -9,7 +9,7 @@ const publicKey = import.meta.env.VITE_IMAGE_KIT_PUBLIC_KEY;
 const authenticator = async () => {
   try {
     const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/upload`);
-    console.log(response)
+   
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(
