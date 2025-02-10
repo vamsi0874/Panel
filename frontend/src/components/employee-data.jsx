@@ -2,7 +2,7 @@ import React from 'react'
 import { IKImage } from 'imagekitio-react'
 
 export const EmployeeData = ({employee}) => {
-  console.log(employee.image)
+
   const urlEndpoint = import.meta.env.VITE_IMAGE_KIT_ENDPOINT
   return (
     <>

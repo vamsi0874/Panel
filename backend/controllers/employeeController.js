@@ -4,7 +4,7 @@ const Employee = require('../models/Employee');
 
 const createEmployee = async (req, res) => {
   try {
-    const { name, email, mobile, designation, gender, course } = req.body;
+    const { name, email, mobile, designation, gender, course, imageUrl } = req.body;
     const user = await User.findOne({ email });
   //  console.log('user',user)
     // const image = req.file.filename
@@ -20,7 +20,7 @@ const createEmployee = async (req, res) => {
       designation,
       gender,
       course,
-      // image,
+      image: imageUrl,
     });
 
     // Save employee to the database

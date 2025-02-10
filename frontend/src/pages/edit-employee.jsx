@@ -44,11 +44,8 @@ const EditEmployee = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log('data', data);
-      await api.post(`/employees/${id}`, data,
-        {
-          headers: { "Content-Type": "multipart/form-data" }
-        }
+      // console.log('data', data);
+      await api.post(`/employees/${id}`, data
       ); 
       navigate('/employee-list'); 
     } catch (error) {

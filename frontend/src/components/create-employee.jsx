@@ -26,20 +26,17 @@ const [uploading, setUploading] = useState(false);
     resolver: zodResolver(CreateEmployeeSchema),
   });
 
-  useEffect(() => {
-    console.log("imageUrl in CreateEmployee:", imageUrl); // Log in useEffect
-}, [imageUrl]);
+
 
   
 const onSubmit = async (values) => { // Make onSubmit async
   if (imageUrl) { // Check if imageUrl is available
       const newValues = { ...values, imageUrl };
-
+     console.log(newValues)
       startTransition(async () => { // Make transition callback async
           try {
               const res = await createEmployee(newValues); // Use await
-              console.log('values', newValues); // Log newValues
-
+              
               if (res.data?.error) {
                   setError(res.data.error);
               }

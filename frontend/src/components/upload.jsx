@@ -38,14 +38,14 @@ const [uploaded, setUploaded] = useState(false);
   };
 
   const onSuccess = (res) => {
-    console.log("Upload Success URL:", res.url); 
+
 
     setImageUrl(res.url);
    
       setUploaded(true)
       setUploading(false)
     
-    console.log("Success", res);
+    
    
   };
 

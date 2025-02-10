@@ -18,9 +18,9 @@ const EmployeeList = () => {
     const fetchEmployees = async () => {
       try {
         const response = await api.get('/employees');
-        console.log(response.data)
+      
         setEmployees(response.data);
-        console.log(employees)
+       
       } catch (error) {
         navigate('/login');
         console.error('Error fetching employees:', error.response.data.error);
