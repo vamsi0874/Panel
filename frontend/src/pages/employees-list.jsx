@@ -18,7 +18,9 @@ const EmployeeList = () => {
     const fetchEmployees = async () => {
       try {
         const response = await api.get('/employees');
+        console.log(response.data)
         setEmployees(response.data);
+        console.log(employees)
       } catch (error) {
         navigate('/login');
         console.error('Error fetching employees:', error.response.data.error);
@@ -36,7 +38,9 @@ const EmployeeList = () => {
    
     try {
       await api.delete(`/employees/${id}`);
+
       setEmployees(employees.filter((employee) => employee._id !== id));
+
     } catch (error) {
       console.error('Error deleting employee:', error);
       alert('Failed to delete employee');

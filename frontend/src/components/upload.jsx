@@ -8,7 +8,7 @@ const publicKey = import.meta.env.VITE_IMAGE_KIT_PUBLIC_KEY;
 
 const authenticator = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/upload");
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/upload`);
     console.log(response)
     if (!response.ok) {
       const errorText = await response.text();
@@ -38,8 +38,10 @@ const [uploaded, setUploaded] = useState(false);
   };
 
   const onSuccess = (res) => {
+    console.log("Upload Success URL:", res.url); 
+
+    setImageUrl(res.url);
    
-      setImageUrl(res.url)
       setUploaded(true)
       setUploading(false)
     
@@ -72,6 +74,7 @@ const [uploaded, setUploaded] = useState(false);
         <label onClick={handleClick}>
           <div className="flex items-center justify-start gap-2 cursor-pointer">
           <img src={`${ok.file}`} alt="" width={20} height={20} />
+          {/* <input type="file" accept="image/*" /> */}
           {uploaded && 'Done'}
           
           </div>

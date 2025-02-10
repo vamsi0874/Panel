@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {CreateEmployeeSchema} from '../schemas'
@@ -15,6 +15,8 @@ const [success, setSuccess] = useState("");
 const navigate = useNavigate()
 const [imageUrl, setImageUrl] = useState(null);
 const [uploading, setUploading] = useState(false);
+
+
   const {
     register,
     handleSubmit,
@@ -23,6 +25,10 @@ const [uploading, setUploading] = useState(false);
   } = useForm({
     resolver: zodResolver(CreateEmployeeSchema),
   });
+
+  useEffect(() => {
+    console.log("imageUrl in CreateEmployee:", imageUrl); // Log in useEffect
+}, [imageUrl]);
 
   
 const onSubmit = async (values) => { // Make onSubmit async
