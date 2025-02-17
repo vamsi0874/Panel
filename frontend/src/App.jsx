@@ -10,7 +10,7 @@ import HomePage from './pages/home-page';
 import EditEmployee from './pages/edit-employee';
 
 function App() {
-  const { user, loading } = useContext(AuthContext); // Get the user and loading from AuthContext
+  const { user, loading } = useContext(AuthContext); 
 
   
   if (loading) {

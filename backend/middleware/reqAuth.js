@@ -1,10 +1,10 @@
 
 const jwt = require('jsonwebtoken');
 
-// Middleware to protect routes
+
 const requireAuth = (req, res, next) => {
   
-  const token = req.headers.authorization?.split(' ')[1]; // Get token from the Authorization header
+  const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ error: 'Access Denied. No token provided.' });
@@ -12,7 +12,7 @@ const requireAuth = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Add user data to request object
+    req.user = decoded;
     next(); 
   } catch (error) {
     return res.status(401).json({ error: 'Invalid token. Access denied.' });

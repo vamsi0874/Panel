@@ -7,9 +7,11 @@ export const EmployeeData = ({employee}) => {
   return (
     <>
                   <td className="border p-2">{employee._id.slice(-3)}</td>
-                  <td className="border p-2"><IKImage 
-                  urlEndpoint={urlEndpoint}
-                  src={`${employee.image}`} height={100} width={100}/></td>
+                  <td className="border p-2">
+                        <IKImage 
+                      urlEndpoint={urlEndpoint}
+                      src={`${employee.image}`} height={100} width={100}/>
+                  </td>
                   <td className="border p-2">{employee.name}</td>
                   <td className="border p-2">{employee.email}</td>
                   <td className="border p-2">{employee.mobile}</td>
